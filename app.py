@@ -1,10 +1,12 @@
 from flask import Flask, request
 from flask_pydantic_spec import FlaskPydanticSpec, Response, Request
 from pydantic import BaseModel
+from tinydb import TinyDB
 
 server = Flask(__name__)
 spec = FlaskPydanticSpec("flask", title="Python API")
 spec.register(server)
+database = TinyDB('database.json')
 
 
 class People(BaseModel):
@@ -25,6 +27,7 @@ def get_people():
 @spec.validate(body=Request(People), resp=Response(HTTP_200=People))
 def create_new_person():
     body = request.context.body.dict()
+    database.insert(body)
     return body
 
 
