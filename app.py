@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_pydantic_spec import FlaskPydanticSpec, Response, Request
 from pydantic import BaseModel
 from tinydb import TinyDB
@@ -20,7 +20,7 @@ class People(BaseModel):
 @server.get('/people')
 # @spec.validate(resp=Response(HTTP_200=People))
 def get_people():
-    return 'listando todos os usuários'
+    return jsonify(database.all())
 
 
 @server.post('/people')
