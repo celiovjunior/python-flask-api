@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "pythonapi"
+version = "0.1.0"
+description = ""
+authors = ["Celio Junior <celio_cjr@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^2.2.2"
+httpie = "^3.2.1"
+flask-pydantic-spec = "^0.3.1"
+flask-swagger = "^0.2.14"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
